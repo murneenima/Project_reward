@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>จัดการสมาชิก</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <style>
+    .section-1 {
+      background-color: #E0FFFF;
+
+    }
+
+    #section-2 {
+      background-color: mistyrose;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: pink;">
+    <div class="container ">
+      <div>
+        <a class="navbar-brand" href="#" style="font-size: 30px;">ระบบจัดการคะแนนและกลุ่มบ้าน</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-item nav-link" href="#">
+            <i class="fa fa-home"></i> หน้าหลัก </a>
+          <a class="nav-item nav-link active" href="#">
+            <i class="fas fa-users"></i> สมาชิก </a>
+          <a class="nav-item nav-link" href="admin_activity.html">
+            <i class="fas fa-file-alt"></i> กิจกรรม </a>
+          <a class="nav-item nav-link" href="admin_point.html">
+            <i class="far fa-smile"></i> คะแนน</a>
+          <a class="nav-item nav-link" href="admin_rewards.html">
+            <i class="fas fa-award"></i> ของรางวัล</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-2 col-md-12 mt-5" style="background-color: pink; height: 600px;;">
+        <div class="nav flex-column nav-pills" style="padding: 20px;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+            aria-selected="true">เพิ่มสมาชิก</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+            aria-selected="true">ค้นหาสมาชิก</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+            aria-selected="true">บ้าน</a>
+        </div>
+      </div>
+      
+      <div class="col-lg-10 mt-5 col-md-12">
+        <div class="tab-content" id="v-pills-tabContent">
+          <!--  เพิ่มสมาชิก -->
+          <div class="tab-pane fade show active" id="student_form" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div id="section-2" style="padding: 20px;">
+              <h3 style="text-decoration: underline ; padding-bottom: 40px;color: brown;"> เพิ่มสมาชิก </h3>
+                       
+              <form action="http://172.16.28.158:3000/sign_up" method="POST">
+                <div class="row">
+                  <div class="col-2">
+                      <label for="exampleName">ชื่อ</label>
+                  </div>
+                  <div class="col-4">
+                      <div class="form-group" name="form">
+                          <input  name="name"  type="text" class="input-font py-4 form-control" id="student_name" placeholder="ชื่อ">
+                        </div>
+                  </div>
+                    <div class="col-2">
+                        <label for="exampleFormControlSelect1">นามสกุล</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input name="surname" type="text" class="input-font py-4 form-control" id="student_surname" placeholder="นามสกุล">
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-2">
+                      <label for="exampleFormControlSelect1">รหัสนักศึกษา</label>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <input name="studentID" type="text" class="input-font py-4 form-control" id="student_id" placeholder="รหัสนักศึกษา">
+                    </div>
+                  </div>
+                    <div class="col-2">
+                        <label for="exampleFormControlSelect1">รหัสผ่าน</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input  name="password" type="password" class="input-font py-4 form-control" id="student_password" placeholder="รหัสผ่าน">
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-2">
+                        <label for="exampleFormControlSelect1">บ้าน</label>
+                    </div>
+                    <div class="col-4">
+                        <select   name="house" class="form-control" id="house">
+                            <option >Choose...</option>
+                            <option value="Larry Page" >Larry Page</option>
+                            <option value="Mark Zuckerberg">Mark Zuckerberg</option>
+                            <option value="Elon Musk">Elon Musk</option>
+                            <option value="Bill Gates">Bill Gates</option>
+                          </select>
+                    </div>
+                  </div>
+                  <div class="col center">
+                      <input type="submit" value="บันทึกข้อมูล">
+                  </div>
+              </form>
+            </div>
+          </div>
+          
+          <!--  ค้นหาสมาชิก  -->
+          <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div>
+              <nav class="navbar navbar-danger background-color:mistyrose;">
+                <a class="navbar-brand">ค้นหาสมาชิก</a>
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </nav>
+            </div>
+
+          </div>
+          <!--  บ้าน  -->
+          <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"
+                  aria-selected="true">Larry Page</a>
+                <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true">Mark Zuckerberg</a>
+                <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true">Elon Musk</a>
+                <a class="nav-item nav-link" id="nav-bill-tab" data-toggle="tab" href="#nav-bill" role="tab" aria-controls="nav-bill" aria-selected="true">Bill Gates</a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+              </div>
+
+              <!-- บ้าน เลรี่ เพจ -->
+              <div class="tab-pane fade" id="nav-larry" role="tabpanel" aria-labelledby="nav-larry-tab">
+                <a class="navbar-brand">Members larry</a>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="tab-pane fade" id="nav-mark" role="tabpanel" aria-labelledby="nav-mark-tab">
+                <a class="navbar-brand">Members2 mark</a>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="tab-pane fade" id="nav-elon" role="tabpanel" aria-labelledby="nav-elon-tab">
+                <a class="navbar-brand">Members3 elon</a>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="tab-pane fade" id="nav-bill" role="tabpanel" aria-labelledby="nav-bill-tab">
+                <a class="navbar-brand">Members4 bill</a>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First</th>
+                      <th scope="col">Last</th>
+                      <th scope="col">Handle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  <script>
+  /*function getValue(){
+    var selectHouse = document.getElementById("house").value ;
+    console.log(selectHouse);
+  }*/
+  </script>
+  -->
+</body>
+
+</html>
