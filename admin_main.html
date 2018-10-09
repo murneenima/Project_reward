@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ระบบจัดการคะแนนและกลุ่มบ้าน</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <style>
+        .my-icon {
+            color: cadetblue;
+            font-size: 45px;
+        }
+
+        .input-font {
+            font-size: 20px;
+        }
+
+        #section-1 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background:  url("./image/electrical-circuit-web.jpg");
+            background-position: center;
+            background-attachment: fixed;
+          
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #section-1 .over-lay{
+            width: 100%;
+            min-height: 700px;
+            background: rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            text-decoration-color: aliceblue;
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: pink;">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-size: 30px;">COE-Rewards</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link active" href="#"><i class="fa fa-home"></i> หน้าหลัก </a>
+                    <a class="nav-item nav-link" href="admin_activity.html"><i class="fas fa-file-alt"></i> กิจกรรม </a>
+                    <a class="nav-item nav-link" href="admin_point.html"><i class="far fa-smile"></i> คะแนน</a>
+                    <a class="nav-item nav-link" href="admin_rewards.html"><i class="fas fa-award"></i> ของรางวัล</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="section-1">
+        <div class="over-lay">
+        <div class="container text-white">
+            <div class="row mt-5">
+                <div class="col-8 d-none d-lg-block mt-5">
+                    <div class="row">
+                        <h1 class="display-4" style="font-size: 65px;">
+                           
+                           <p><font face="verdana" ><strong> Computer Engineering </strong></font></p>
+                        </h1>
+                    </div>
+
+                    
+                </div>
+                <div class="col-lg-4 mt-5 ">
+                    <div class="card bg-info text-white text-center">
+                        <div class="card-body">
+                            <h3 class="pb-1">Please Login</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="input-font py-4 form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" class="input-font py-4 form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+
+                                <button type="submit" class="input-font btn btn-block btn-outline-light">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

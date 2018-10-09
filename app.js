@@ -49,7 +49,7 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/sign_up',(req,res)=>{
-    console.log(JSON.stringify(req.body))
+    //console.log(JSON.stringify(req.body))
     //res.send(req.body)
 
   if(req.body.house== 'Choose...'){

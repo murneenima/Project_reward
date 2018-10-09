@@ -21,7 +21,9 @@
       background-color: #E0FFFF;
 
     }
-
+    #table_larry{
+      font-size: 20px;
+    }
     #section-2 {
       background-color: mistyrose;
     }
@@ -87,7 +89,7 @@
            <!--  เพิ่มสมาชิก -->
            <div class="tab-pane fade show active" id="student_form" role="tabpanel" aria-labelledby="v-pills-home-tab" style="padding: 20px;background-color:mistyrose;">
               <h3 style="text-decoration: underline ; padding-bottom: 40px;color: brown;"> เพิ่มสมาชิก </h3>
-              <form action="http://172.16.187.13:3000/sign_up" method="POST" onsubmit="return false;">
+              <form action="http://172.16.187.122:3000/sign_up" method="POST" onsubmit="return false;">
                 <div class="row">
                   <div class="col-2">
                     <label for="exampleName">ชื่อ</label>
@@ -148,58 +150,30 @@
           <!--  บ้าน  -->
           <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" >
             <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"aria-selected="true">Larry Page</a>
-                <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true">Mark Zuckerberg</a>
-                <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true">Elon Musk</a>
-                <a class="nav-item nav-link" id="nav-bill-tab" data-toggle="tab" href="#nav-bill" role="tab" aria-controls="nav-bill" aria-selected="true">Bill Gates</a>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist" onclick="findHouse();">
+                <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"aria-selected="true" >Larry Page</a>
+                <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true" >Mark Zuckerberg</a>
+                <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true" >Elon Musk</a>
+                <a class="nav-item nav-link" id="nav-bill-tab" data-toggle="tab" href="#nav-bill" role="tab" aria-controls="nav-bill" aria-selected="true" >Bill Gates</a>
               </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
               </div>
 
               <!--larry-->
-              <div class="tab-pane fade" id="nav-larry" role="tabpanel" aria-labelledby="nav-larry-tab">
-                <a class="navbar-brand">Members larry</a>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
+              <div class="tab-pane fade" id="nav-larry" role="tabpanel" aria-labelledby="nav-larry-tab" style="" >
+                <a class="navbar-brand"></a>
+                <table id="table_larry" style="">
+                  
                 </table>
 
               </div>
               
               <!--mark-->
               <div class="tab-pane fade" id="nav-mark" role="tabpanel" aria-labelledby="nav-mark-tab">
-                <a class="navbar-brand">Members2 mark</a>
-                <table class="table">
+                <a class="navbar-brand"></a>
+                <table id="table_mark">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -208,70 +182,24 @@
                       <th scope="col">Handle</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
+                
                 </table>
 
               </div>
               
               <!--elon-->
               <div class="tab-pane fade" id="nav-elon" role="tabpanel" aria-labelledby="nav-elon-tab">
-                <a class="navbar-brand">Members3 elon</a>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-                  </tbody>
+                <a class="navbar-brand"></a>
+                <table id="table_elon">
+      
                 </table>
 
               </div>
               
               <!-- Bill-->
               <div class="tab-pane fade" id="nav-bill" role="tabpanel" aria-labelledby="nav-bill-tab">
-                <a class="navbar-brand">Members4 bill</a>
-                <table class="table">
+                <a class="navbar-brand"></a>
+                <table id="table_bill">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -280,25 +208,6 @@
                       <th scope="col">Handle</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
                   </tbody>
                 </table>
 
@@ -314,6 +223,85 @@
   </div>
 
   
+  <script>
+        var data = "{{data}}";
+        var dataStudent =JSON.parse(decodeURI(data)) 
+         
+    function findHouse(){
+      var rowdata_larry ="";
+      var rowdata_bill ="";
+      var rowdata_elon ="";
+      var rowdata_mark ="";
+
+        var house_larry = [] ;
+        var house_elon = [] ;
+        var house_mark = [] ;
+        var house_bill = [] ;
+        var long_student = dataStudent.length ; 
+        for(let i=0;i < long_student ; i++){
+          if(dataStudent[i].house == 'Larry Page'){
+            house_larry.push(dataStudent[i]);
+          }
+          else if(dataStudent[i].house == 'Bill Gates'){
+            house_bill.push(dataStudent[i]);
+          }else if(dataStudent[i].house == 'Elon Musk'){
+            house_elon.push(dataStudent[i]);
+          }else if(dataStudent[i].house == 'Mark Zuckerberg'){
+            house_mark.push(dataStudent[i]);
+          }
+          
+          //console.log(dataStudent[i].house)
+          //console.log('------------')
+          
+        
+        }
+          //console.log('============')
+          //console.log(house_larry)
+          //console.log('------------')
+          //console.log('------------')
+         // console.log(house_bill)
+          //console.log('------------')
+          console.log(house_mark)
+          console.log('------------')
+          console.log(house_bill)
+          console.log('------------')
+
+
+          for(let i=0;i<house_larry.length;i++){
+            rowdata_larry += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_larry[i].studentID+ "</td><td>"+house_larry[i].name+"</td><td>"+house_larry[i].surname+"</td></tr></tbody>"
+           
+          }
+          document.getElementById("table_larry").innerHTML = rowdata_larry ;
+          for(let j=0;j<house_bill.length;j++){
+            rowdata_bill += "<tbody><tr><td>"+(j+1)+"</td><td>"+house_bill[j].studentID+ "</td><td>"+house_bill[j].name+"</td><td>"+house_bill[j].surname+"</td></tr></tbody>"
+           
+          }
+          document.getElementById("table_bill").innerHTML = rowdata_bill ;
+          for(let i=0;i<house_elon.length;i++){
+            rowdata_elon += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_elon[i].studentID+ "</td><td>"+house_elon[i].name+"</td><td>"+house_elon[i].surname+"</td></tr></tbody>"
+           
+          }
+          document.getElementById("table_elon").innerHTML = rowdata_elon ;
+          for(let i=0;i<house_mark.length;i++){
+            rowdata_mark += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_mark[i].studentID+ "</td><td>"+house_mark[i].name+"</td><td>"+house_mark[i].surname+"</td></tr></tbody>"
+           
+          }
+          document.getElementById("table_mark").innerHTML = rowdata_mark ;
+            
+            
+          
+          
+          
+
+         
+   
+          
+
+         
+
+    }
+
+  </script>
 
 </body>
 
