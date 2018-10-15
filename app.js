@@ -1,6 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const hbs = require('hbs')
+mongoose.Promise = global.Promise; 
+
+mongoose.connect('mongodb://localhost:27017/StudentDB').then((doc)=>{
+    console.log('-------success--------')
+}, (err)=>{
+    console.log('fail')
+})
 
 var Schema = mongoose.Schema
 var StudentSchema = new Schema({
@@ -28,15 +36,50 @@ var StudentSchema = new Schema({
     }  
 })
 
-var Student = mongoose.model('Student',StudentSchema)
+var TypeSchema = new Schema({
+    typeactivity :{
+        type:String,
+        required: true
+    },
+    lastid:{
+        default:0
 
-mongoose.connect('mongodb://localhost:27017/StudentDB').then((doc)=>{
-    console.log('success')
-}, (err)=>{
-    console.log('fail')
+    }
 })
 
+var ActivitySchema = new Schema({
+    id_activity:{
+        type:Number,
+        required:true
+    },
+    name_activity:{
+        type:String,
+        required:true,
+        unique:true  
+    },
+    type_activity:{
+        type:String,
+        required:true
+    },
+    point:{
+        type:Number,
+        required:true
+    },
+    purpose:{
+        type:String,
+        required:true
+    }
+
+})
+
+var Student = mongoose.model('Student',StudentSchema) // สร้าง table
+var TypeActivity = mongoose.model('TypeActivity',TypeSchema) // สร้าง mode/table activity
+var Activity = mongoose.model('Activity',ActivitySchema) // สร้าง mode/table activity
+
 var app = express()
+app.set('view engine','hbs')
+//app.use(express.static('public'))
+
 
 app.use(bodyParser.urlencoded({ // เข้ารหัส เพราะเวลา html ส่งข้อมูลมา มันจะเป็นรหัส ทำให้มันอ่านข้อมูลที่ส่งมาจาก form ได้
     extended:true
@@ -47,6 +90,8 @@ app.get('/',(req,res)=>{
     console.log('hello')
     res.send('hello')
 })
+
+//================================== Member =================================
 
 app.post('/sign_up',(req,res)=>{
     //console.log(JSON.stringify(req.body))
@@ -85,17 +130,24 @@ app.post('/sign_up',(req,res)=>{
     
 })
 
-/*app.get('/sign_in',(req,res)=>{
+app.post('/sign_in',(req,res)=>{
     
-        let studentIDInput = req.headers['studentID']
-        let passwordInput = req.headers['password']
+        let studentIDInput = req.body.studentID
+        let passwordInput = req.body.password
 
          Student.find({
          studentID : studentIDInput,
-       password : passwordInput
+        password : passwordInput
     }).then((student)=>{
         if(student.length == 1){ //เจอข้อมูล 1 คน 
-            res.send(student[0]) // ที่เป็น 0 เพราะมันเจอที่ ตน ที่ 0 มันต้องมีแค่คนเดียว
+            res.send(student[0])// ที่เป็น 0 เพราะมันเจอที่ ตน ที่ 0 มันต้องมีแค่คนเดียว
+            //  res.render('admin_success.hbs',{
+            //     studentID:student[0].studentID,
+            //     name:student[0].name,
+            //     surname:student[0].surname,
+            //     house:studentID[0].house
+            // }) 
+            console.log('login success')
         }else if(student.length == 0){
             res.status(400).send('sorry id not found')
         }
@@ -103,7 +155,98 @@ app.post('/sign_up',(req,res)=>{
         res.send(400).send(err)
     })
 })
-*/
+
+app.get('/find',(req,res)=>{
+    Student.find({},(err,data)=>{
+        if(err) console.log(err);
+      //  console.log('Student.findOne | ',data);
+    }).then((data)=>{
+       // for(i=0 ; i<data.length; i++){
+            res.render('admin_member.hbs',{
+                data: encodeURI(JSON.stringify(data))
+            })
+        //}
+        
+
+    },(err)=>{
+        res.status(400).render('fail.hbs')
+    })
+})
+
+//================================== Type Activity==================================
+
+
+app.get('/get_typeactivity',(req,res)=>{
+    TypeActivity.find().then((doc)=>{
+        res.send(doc)
+    },(err)=>{ 
+        res.status(400).send(err)
+
+    })
+
+})
+
+app.get('/activity',(req,res)=>{
+    TypeActivity.find({},(err,data)=>{
+        if(err) console.log(err);
+    }).then((data)=>{
+            res.render('admin_activity.hbs',{
+            data: encodeURI(JSON.stringify(data))
+            })
+    },(err)=>{
+        res.status(400).render('fail.hbs')
+    })
+})
+
+app.post('/post_typeactivity',(req,res)=>{
+    let newTypeaActivity = new TypeActivity ({
+        typeactivity:req.body.typeactivity,
+        lastid: 0 
+    })
+    newTypeaActivity.save().then((doc)=>{
+        res.send(doc)
+    },(err)=>{
+        res.status(400).send(err)
+    })
+})
+
+//==================================Activity==================================
+
+app.post('/post_activity',(req,res)=>{
+    //console.log(JSON.stringify(req.body))
+    //res.send(req.body)
+    TypeActivity.find({},(err,data)=>{
+        console.log('last ID =  ',TypeActivity.lastid);
+    })
+    let newActivity = new Activity ({
+        id_activity:lastid+1,
+        name_activity:req.body.name_activity,
+        type_activity:req.body.type_activity,
+        point:req.body.point,
+        purpose:req.body.purpose
+
+    })
+    Activity.save().then((doc)=>{
+        res.send(doc)
+    },(err)=>{
+        res.status(400).send(err)
+    })
+
+    TypeActivity.findOne({id_activity: Number}, function(err, lastid){            
+        if(lastid){
+            TypeActivity.id_activity =+ 1
+            TypeActivity.save(function(err) {
+                console.log('=========== ID ',lastid)
+            });
+        }else{
+            console.log(err);
+        }
+    });
+    //console.log('hello')
+    //res.send('hello')
+})
+
+
 app.listen(3000,()=>{
     console.log('listin port 3000') 
 })

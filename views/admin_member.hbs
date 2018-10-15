@@ -16,14 +16,56 @@
     crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
   <style>
     .section-1 {
       background-color: #E0FFFF;
+    }
+
+    #table_larry,
+    #table_bill,
+    #table_mark,
+    #table_elon {
+      font-size: 20px;
+      text-align: center;
+    }
+    h1{
+     font-family: 'Muli', sans-serif;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    th {
+      background-color: black;
+      color: white;
+    }
+
+    table,
+    th,
+    td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid black;
 
     }
-    #table_larry{
-      font-size: 20px;
+    a{
+      font-family: 'Open Sans', sans-serif;
     }
+    body{
+      font-family: 'Kanit', sans-serif !important;
+    }
+    a{
+      font-family: 'Kanit', sans-serif !important;
+      color: black;
+     
+    }
+    table {
+      width: 100%;
+    }
+
+
     #section-2 {
       background-color: mistyrose;
     }
@@ -44,15 +86,15 @@
 
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="admin_main.html">
+          <a class="nav-item nav-link jj" href="admin_main.html">
             <i class="fa fa-home"></i> หน้าหลัก </a>
-          <a class="nav-item nav-link active" href="#">
+          <a class="nav-item nav-link active jj" href="#">
             <i class="fas fa-users"></i> สมาชิก </a>
-          <a class="nav-item nav-link" href="admin_activity.html">
+          <a class="nav-item nav-link jj" href="admin_activity.html">
             <i class="fas fa-file-alt"></i> กิจกรรม </a>
-          <a class="nav-item nav-link" href="admin_point.html">
+          <a class="nav-item nav-link jj" href="admin_point.html">
             <i class="far fa-smile"></i> คะแนน</a>
-          <a class="nav-item nav-link" href="admin_reward.html">
+          <a class="nav-item nav-link jj" href="admin_reward.html">
             <i class="fas fa-award"></i> ของรางวัล</a>
         </div>
       </div>
@@ -61,100 +103,117 @@
 
   <div class="container mt-5">
     <div class="row">
-      <div class="col-lg-2 col-md-12 mt-5" style="background-color: pink; height: 600px;;">
-        <div class="nav flex-column nav-pills" style="padding: 20px;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+      <div class="col-lg-2 col-md-12 mt-5" style="background-color: pink; height: 600px;">
+        <div class="nav flex-column nav-pills" style="font-weight: bold;padding:20px;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link jj" id="v-pills-profile-home-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
             aria-selected="true">ค้นหาสมาชิก</a>
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+          <a class="nav-link active jj" id="v-pills-tab" data-toggle="pill" href="#student_form" role="tab" aria-controls="v-pills-home"
             aria-selected="true">เพิ่มสมาชิก</a>
-          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+          <a class="nav-link jj" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
             aria-selected="true">บ้าน</a>
         </div>
       </div>
 
       <div class="col-lg-10 mt-5 col-md-12">
         <div class="tab-content" id="v-pills-tabContent">
-         
-          <!--  ค้นหาสมาชิก -->
-          <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-              <nav class="navbar navbar-danger background-color:mistyrose;">
-                <a class="navbar-brand">ค้นหาสมาชิก</a>
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </nav>
-          </div>  
 
-           <!--  เพิ่มสมาชิก -->
-           <div class="tab-pane fade show active" id="student_form" role="tabpanel" aria-labelledby="v-pills-home-tab" style="padding: 20px;background-color:mistyrose;">
-              <h3 style="text-decoration: underline ; padding-bottom: 40px;color: brown;"> เพิ่มสมาชิก </h3>
-              <form action="http://172.16.187.122:3000/sign_up" method="POST" onsubmit="return false;">
-                <div class="row">
-                  <div class="col-2">
-                    <label for="exampleName">ชื่อ</label>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group" name="form">
-                      <input name="name" type="text" class="input-font py-4 form-control" id="student_name" placeholder="ชื่อ">
-                    </div>
-                  </div>
-                  <div class="col-2">
-                    <label for="exampleFormControlSelect1">นามสกุล</label>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <input name="surname" type="text" class="input-font py-4 form-control" id="student_surname" placeholder="นามสกุล">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <label for="exampleFormControlSelect1">รหัสนักศึกษา</label>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <input name="studentID" type="text" class="input-font py-4 form-control" id="student_id" placeholder="รหัสนักศึกษา">
-                    </div>
-                  </div>
-                  <div class="col-2">
-                    <label for="exampleFormControlSelect1">รหัสผ่าน</label>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <input name="password" type="password" class="input-font py-4 form-control" id="student_password" placeholder="รหัสผ่าน">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-2">
-                    <label for="exampleFormControlSelect1">บ้าน</label>
-                  </div>
-                  <div class="col-4">
-                    <select name="house" class="form-control" id="house">
-                      <option>Choose...</option>
-                      <option value="Larry Page">Larry Page</option>
-                      <option value="Mark Zuckerberg">Mark Zuckerberg</option>
-                      <option value="Elon Musk">Elon Musk</option>
-                      <option value="Bill Gates">Bill Gates</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row justify-content-center mt-4">
-                  <input type="submit" class="btn btn-primary" value="บันทึกข้อมูล">
-                </div>
+          <!--  ค้นหาสมาชิก -->
+          <div class="tab-pane fade " style="background-color:mistyrose;" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <nav class="navbar navbar-danger background-color:mistyrose; " style=" margin-bottom: 20px;">
+              <a class="navbar-brand">ค้นหาสมาชิก</a>
+              <form class="form-inline">
+                <input id="idstudent" class="form-control mr-sm-2" type="search" placeholder="Search ID STUDENT" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="search_id()"><i class="fas fa-search"></i></button>
               </form>
+            </nav>
+            <div class="container">
+              <div class="row">
+               <table id="display_id">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>STUDENT ID</th>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
+                    </tr id="inner_display">
+                  </thead>
+
+                </table>
+             </div>
+            </div>
+            
           </div>
 
-          
+          <!--  เพิ่มสมาชิก -->
+          <div class="tab-pane fade " id="student_form" role="tabpanel" aria-labelledby="v-pills-home-tab" style="padding: 20px;background-color:mistyrose;">
+            <h3 style="text-decoration: underline ; padding-bottom: 40px;color: brown;"> เพิ่มสมาชิก </h3>
+            <iframe name="votar" style="display:none;"></iframe>
+            <form action="http://172.16.187.16:3000/sign_up" method="POST" target="votar" >
+              <div class="row">
+                <div class="col-2">
+                  <label for="exampleName">ชื่อ</label>
+                </div>
+                <div class="col-4">
+                  <div class="form-group" name="form">
+                    <input name="name" type="text" class="input-font py-4 form-control" id="student_name" placeholder="ชื่อ">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <label for="exampleFormControlSelect1">นามสกุล</label>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <input name="surname" type="text" class="input-font py-4 form-control" id="student_surname" placeholder="นามสกุล">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <label for="exampleFormControlSelect1">รหัสนักศึกษา</label>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <input name="studentID" type="text" class="input-font py-4 form-control" id="student_id" placeholder="รหัสนักศึกษา">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <label for="exampleFormControlSelect1">รหัสผ่าน</label>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <input name="password" type="password" class="input-font py-4 form-control" id="student_password" placeholder="รหัสผ่าน">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <label for="exampleFormControlSelect1">บ้าน</label>
+                </div>
+                <div class="col-4">
+                  <select name="house" class="form-control" id="house">
+                    <option>Choose...</option>
+                    <option value="Larry Page">Larry Page</option>
+                    <option value="Mark Zuckerberg">Mark Zuckerberg</option>
+                    <option value="Elon Musk">Elon Musk</option>
+                    <option value="Bill Gates">Bill Gates</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row justify-content-center mt-4">
+                <input type="submit" class="btn btn-primary" onclick="a()" value="บันทึกข้อมูล">
+              </div>
+            </form>
+          </div>
+
+
           <!--  บ้าน  -->
-          <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" >
+          <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
             <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist" onclick="findHouse();">
-                <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"aria-selected="true" >Larry Page</a>
-                <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true" >Mark Zuckerberg</a>
-                <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true" >Elon Musk</a>
-                <a class="nav-item nav-link" id="nav-bill-tab" data-toggle="tab" href="#nav-bill" role="tab" aria-controls="nav-bill" aria-selected="true" >Bill Gates</a>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist" onclick="findHouse()">
+                <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink">Larry Page</a>
+                <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink;">Mark Zuckerberg</a>
+                <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink;">Elon Musk</a>
+                <a class="nav-item nav-link" id="nav-bill-tab" data-toggle="tab" href="#nav-bill" role="tab" aria-controls="nav-bill" aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink;">Bill Gates</a>
               </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -162,144 +221,189 @@
               </div>
 
               <!--larry-->
-              <div class="tab-pane fade" id="nav-larry" role="tabpanel" aria-labelledby="nav-larry-tab" style="" >
+              <div class="tab-pane fade" id="nav-larry" role="tabpanel" aria-labelledby="nav-larry-tab">
                 <a class="navbar-brand"></a>
-                <table id="table_larry" style="">
-                  
+                <div class="text-center">
+                 <img src="https://www.bpicc.com/images/2018/10/09/Larry.png" alt="Larry.png" class="rounded" width="40%" style="position:center;">
+                </div>
+                <h1> LARRY PAGE </h1>
+                <table id="table_larry">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>STUDENT ID</th>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
+                    </tr id="inner_larry">
+                  </thead>
+
                 </table>
 
               </div>
-              
+
               <!--mark-->
               <div class="tab-pane fade" id="nav-mark" role="tabpanel" aria-labelledby="nav-mark-tab">
                 <a class="navbar-brand"></a>
+                <div class="text-center">
+                  <img src="https://www.bpicc.com/images/2018/10/09/Mark.png" alt="Mark.png" border="0"  width="30%" style="position:center;">
+                </div>
+                <h1> MARK ZUCKERBERG </h1>
                 <table id="table_mark">
-                  <thead>
+                  <thead class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th>#</th>
+                      <th>STUDENT ID</th>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
                     </tr>
                   </thead>
-                
                 </table>
 
               </div>
-              
+
+             
+
+
+
               <!--elon-->
               <div class="tab-pane fade" id="nav-elon" role="tabpanel" aria-labelledby="nav-elon-tab">
                 <a class="navbar-brand"></a>
+                <div class="text-center">
+                 <img src="https://www.bpicc.com/images/2018/10/09/elon.png" alt="elon.png" border="0"  width="30%" style="position:center;">
+                </div>
+                <h1> ELON MUSK </h1>
                 <table id="table_elon">
-      
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>STUDENT ID</th>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
+                    </tr>
+                  </thead>
                 </table>
 
               </div>
-              
+
               <!-- Bill-->
               <div class="tab-pane fade" id="nav-bill" role="tabpanel" aria-labelledby="nav-bill-tab">
                 <a class="navbar-brand"></a>
+                <div class="text-center">
+                  <img src="https://www.bpicc.com/images/2018/10/09/bill_gate.png" alt="bill_gate.png" border="0" width="30%" style="position:center;">
+                </div>
+                <h1> BILL GATE </h1>
                 <table id="table_bill">
-                  <thead>
+                  <thead id="header-table" class="thead-dark">
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th>#</th>
+                      <th>STUDENT ID</th>
+                      <th>NAME</th>
+                      <th>SURNAME</th>
                     </tr>
                   </thead>
+
                   </tbody>
                 </table>
 
               </div>
             </div>
 
-          
-        
+
+
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
 
-  
+
   <script>
-        var data = "{{data}}";
-        var dataStudent =JSON.parse(decodeURI(data)) 
-         
-    function findHouse(){
-      var rowdata_larry ="";
-      var rowdata_bill ="";
-      var rowdata_elon ="";
-      var rowdata_mark ="";
+    var data = "{{data}}";
+    var dataStudent = JSON.parse(decodeURI(data))
 
-        var house_larry = [] ;
-        var house_elon = [] ;
-        var house_mark = [] ;
-        var house_bill = [] ;
-        var long_student = dataStudent.length ; 
-        for(let i=0;i < long_student ; i++){
-          if(dataStudent[i].house == 'Larry Page'){
-            house_larry.push(dataStudent[i]);
-          }
-          else if(dataStudent[i].house == 'Bill Gates'){
-            house_bill.push(dataStudent[i]);
-          }else if(dataStudent[i].house == 'Elon Musk'){
-            house_elon.push(dataStudent[i]);
-          }else if(dataStudent[i].house == 'Mark Zuckerberg'){
-            house_mark.push(dataStudent[i]);
-          }
-          
-          //console.log(dataStudent[i].house)
-          //console.log('------------')
-          
-        
-        }
-          //console.log('============')
-          //console.log(house_larry)
-          //console.log('------------')
-          //console.log('------------')
-         // console.log(house_bill)
-          //console.log('------------')
-          console.log(house_mark)
-          console.log('------------')
-          console.log(house_bill)
-          console.log('------------')
+    var house_larry = [];
+    var house_elon = [];
+    var house_mark = [];
+    var house_bill = [];
+    var long_student = dataStudent.length;
+    for (let i = 0; i < long_student; i++) {
+      if (dataStudent[i].house == 'Larry Page') {
+        house_larry.push(dataStudent[i]);
+      }
+      else if (dataStudent[i].house == 'Bill Gates') {
+        house_bill.push(dataStudent[i]);
+      } else if (dataStudent[i].house == 'Elon Musk') {
+        house_elon.push(dataStudent[i]);
+      } else if (dataStudent[i].house == 'Mark Zuckerberg') {
+        house_mark.push(dataStudent[i]);
+      }
+
+      //console.log(dataStudent[i].house)
+      //console.log('------------')
+    }
+
+    function a(){
+      alert('input member success');
+    //  document.getElementById('student_name').value = '' ;
+    //  document.getElementById('student_surname').value = '' ;
+   //   document.getElementById('student_id').value = '';
+   //   document.getElementById('student_password').value = '';
+   //   document.getElementById('house').value = '';
+    }
 
 
-          for(let i=0;i<house_larry.length;i++){
-            rowdata_larry += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_larry[i].studentID+ "</td><td>"+house_larry[i].name+"</td><td>"+house_larry[i].surname+"</td></tr></tbody>"
-           
-          }
-          document.getElementById("table_larry").innerHTML = rowdata_larry ;
-          for(let j=0;j<house_bill.length;j++){
-            rowdata_bill += "<tbody><tr><td>"+(j+1)+"</td><td>"+house_bill[j].studentID+ "</td><td>"+house_bill[j].name+"</td><td>"+house_bill[j].surname+"</td></tr></tbody>"
-           
-          }
-          document.getElementById("table_bill").innerHTML = rowdata_bill ;
-          for(let i=0;i<house_elon.length;i++){
-            rowdata_elon += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_elon[i].studentID+ "</td><td>"+house_elon[i].name+"</td><td>"+house_elon[i].surname+"</td></tr></tbody>"
-           
-          }
-          document.getElementById("table_elon").innerHTML = rowdata_elon ;
-          for(let i=0;i<house_mark.length;i++){
-            rowdata_mark += "<tbody><tr><td>"+(i+1)+"</td><td>"+house_mark[i].studentID+ "</td><td>"+house_mark[i].name+"</td><td>"+house_mark[i].surname+"</td></tr></tbody>"
-           
-          }
-          document.getElementById("table_mark").innerHTML = rowdata_mark ;
-            
-            
-          
-          
-          
+    function findHouse() {
+      var rowdata_larry = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
+      var rowdata_bill = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
+      var rowdata_elon = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
+      var rowdata_mark = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
 
-         
-   
-          
+      for (let i = 0; i < house_larry.length; i++) {
+        rowdata_larry += "<tbody><tr><td> " + (i + 1) + "</td><td>" + house_larry[i].studentID + "</td><td>" + house_larry[i].name + "</td><td>" + house_larry[i].surname + "</td></tr></tbody>"
 
-         
+      }
+      document.getElementById("table_larry").innerHTML = rowdata_larry;
+
+      for (let j = 0; j < house_bill.length; j++) {
+        rowdata_bill += "<tbody><tr><td> " + (j + 1) + "</td><td>" + house_bill[j].studentID + "</td><td>" + house_bill[j].name + "</td><td>" + house_bill[j].surname + "</td></tr></tbody>"
+
+      }
+      document.getElementById("table_bill").innerHTML = rowdata_bill;
+      for (let i = 0; i < house_elon.length; i++) {
+        rowdata_elon += "<tbody><tr><td> " + (i + 1) + "</td><td>" + house_elon[i].studentID + "</td><td>" + house_elon[i].name + "</td><td>" + house_elon[i].surname + "</td></tr></tbody>"
+
+      }
+      document.getElementById("table_elon").innerHTML = rowdata_elon;
+      for (let i = 0; i < house_mark.length; i++) {
+        rowdata_mark += "<tbody><tr><td> " + (i + 1) + "</td><td>" + house_mark[i].studentID + "</td><td>" + house_mark[i].name + "</td><td>" + house_mark[i].surname + "</td></tr></tbody>"
+
+      }
+      document.getElementById("table_mark").innerHTML = rowdata_mark;
 
     }
+   // -----------------------------Search ID-------------------------------------
+  
+    function search_id(){
+      var row_searchID = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
+      var id_input = document.getElementById("idstudent").value;
+       //console.log(id_input);
+      var status = false;
+       for(let i=0 ;i < dataStudent.length ;i++){
+            if(id_input == dataStudent[i].studentID){
+              //console.log(id_input);
+              status = true;
+               row_searchID += "<tbody><tr><td> " + "1" + "</td><td>" + dataStudent[i].studentID + "</td><td>" + dataStudent[i].name + "</td><td>" + dataStudent[i].surname + "</td></tr></tbody>"
+            }
+       }
+       if(!status){
+          alert('not found this ID');
+       }else{
+
+      document.getElementById("display_id").innerHTML = row_searchID;
+       }
+
+    }
+
 
   </script>
 

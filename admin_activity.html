@@ -66,7 +66,7 @@
                         <div class="col-3" style="background-color: pink;padding-top: 20px;height: 500px;">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                                        <a class="nav-link" id="v-pills-manage_activity-tab" data-toggle="pill" href="#v-pills-manage_activity" role="tab" aria-controls="v-pills-manage_activity"
+                                        <a class="nav-link " id="v-pills-manage_activity-tab" data-toggle="pill" href="#v-pills-manage_activity" role="tab" aria-controls="v-pills-manage_activity"
                                                 aria-selected="false">จัดการกิจกรรม</a>
                                         <a class="nav-link" id="v-pills-open_activity-tab" data-toggle="pill" href="#v-pills-open_activity" role="tab" aria-controls="v-pills-open_activity"
                                                 aria-selected="false">เปิดกิจกรรม</a>
@@ -110,49 +110,68 @@
                                                 <div class="tab-content" id="myTabContent">
                                                         <!-- สร้างประเภทกิจกรรม -->
                                                         <div class="tab-pane fade show active" style="padding-top: 30px;" id="type_activity" role="tabpanel" aria-labelledby="type_activity-tab">
-                                                                <div class="form-group">
-                                                                        <label for="exampleFormIdTypeActivity">รหัสประเภทกิจกรรม</label>
-                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="รหัสประเภทกิจกรรม">
-
-                                                                        <label for="exampleFormControlSelect1">ประเภทกิจกรรม</label>
-                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="ประเภทกิจกรรม">
-
-
-                                                                        <button type="button" class="btn btn-outline-danger mt-3">บันทึกข้อมูล</button>
+                                                               <form  action="http://172.16.187.161:3000/post_typeactivity" method="POST">
+                                                                <div class="form-group" >
+                                                                        <div class="row">
+                                                                                <h3 style="text-decoration: underline ; padding-bottom: 20px;color: brown; margin-left: 20px;"> เพิ่มประเภทของกิจกรรม </h3> 
+                                                                        </div>
+                                                                        <div class="row">
+                                                                                <div class="col-3">
+                                                                                        <label for="exampleFormControlSelect1">ประเภทกิจกรรม</label>
+                                                                                </div>
+                                                                                <div class="col-8">
+                                                                                        <input name="typeactivity" type="text" class="input-font py-4 form-control" id="TypeActivity" placeholder="ประเภทกิจกรรม">
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="row justify-content-center mt-4">
+                                                                                <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+                                                                        </div>
                                                                 </div>
+                                                               </form>
+                                                                
                                                         </div>
                                                         <!-- สร้างข้อมูลกิจกรรม -->
                                                         <div class="tab-pane fade" id="data_activity" role="tabpanel" aria-labelledby="data_activity-tab">
                                                                 <div class="form-group">
                                                                         <div class="row">
-                                                                                <div class="col mt-3">
+                                                                                <div class="col-3 mt-3">
                                                                                         <label for="exampleFormControlSelect1">รหัสกิจกรรม</label>
-                                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="ประเภทกิจกรรม">
+                                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="รหัสกิจกรรม">
                                                                                 </div>
-                                                                                <div class="col mt-3">
+                                                                                <div class="col-9 mt-3">
                                                                                         <label for="exampleFormControlSelect1">ชื่อกิจกรรม</label>
-                                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="ประเภทกิจกรรม">
-                                                                                </div>
-                                                                                <div class="form-group col mt-4">
-                                                                                        <label for="inputTypeActivity">ประเภทกิจกรรม
-                                                                                                <br>
-                                                                                                <label>
-                                                                                                        <select id="inputTypeActivity" class="form-control">
-                                                                                                                <option selected>Choose............</option>
-                                                                                                                <option>...</option>
-                                                                                                        </select>
+                                                                                        <input type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="ชื่อกิจกรรม">
                                                                                 </div>
 
                                                                         </div>
+                                                                        <div class="row">
+                                                                                <div class="col-3 mt-3">
+                                                                                                <label for="inputTypeActivity">ประเภทกิจกรรม</label>
+                                                                                </div>
+                                                                                <div class="col-9 mt-3">
+                                                                                        <div class="form-group col-md-4">
+                                                                                                <select id="inputState" class="form-control">
+                                                                                                  <option selected>Choose...........</option>
+                                                                                                  <option>...</option>
+                                                                                                </select>
+                                                                                              </div>
+                                                                                </div>
+                                                                                
+                                                                        </div>
+                                                                        <div class="row">
+                                                                                        <div class="col-3">
+                                                                                                        <div class="form-group mt-3 ">
+                                                                                                                        <label for="inputPoint">คะแนนที่ได้รับ</label>
+                                                                                                                        <input type="number" class="form-control" id="inputPoint" placeholder=คะแนนที่ได้รับ>
+                                                                                                                </div>
+                                                                                        </div>
+                                                                        </div>
                                                                         <div class="form-group ">
                                                                                 <label for="inputObjective">วัตถุประสงค์</label>
-                                                                                <input type="text" class="form-control" id="inputObjective" placeholder="วัตถุประสงค์">
+                                                                                <textarea type="textarea" class="form-control" id="inputObjective" placeholder="วัตถุประสงค์"> </textarea>
                                                                         </div>
-                                                                        <div class="form-group mt-3">
-                                                                                <label for="inputPoint">คะแนนที่ได้รับ</label>
-                                                                                <input type="number" class="form-control" id="inputPoint" placeholder=คะแนนที่ได้รับ>
-                                                                        </div>
-                                                                        <button type="button" class="btn btn-outline-danger mt-3">บันทึกข้อมูล</button>
+                                                                        
+                                                                        <button type="button" class="btn btn-outline-primary mt-3" style="margin-left: 330px;">บันทึกข้อมูล</button>
                                                                 </div>
                                                         </div>
                                                         <!-- แก้ไขกิจกรรม -->
@@ -198,7 +217,7 @@
 
 
                                                                 <div>
-                                                                        <button type="button" class="btn btn-outline-danger mt-3">บันทึกข้อมูล</button>
+                                                                                <button type="button" class="btn btn-outline-primary mt-3" style="margin-left: 330px;">บันทึกข้อมูล</button>
                                                                 </div>
 
 
@@ -214,7 +233,7 @@
 
                                         </div>
                                         <!--  เปิดกิจกรรม-->
-                                        <div class="tab-pane fade ml-auto" style="background-color:mistyrose; height: 500px;;" id="v-pills-open_activity" role="tabpanel"
+                                        <div class="tab-pane fade" style="background-color:mistyrose; height: 500px;;" id="v-pills-open_activity" role="tabpanel"
                                                 aria-labelledby="v-pills-open_activity-tab">
                                                 <div class="mt-3 ml-3 mr-5">
                                                         <div class="form-group">
@@ -243,13 +262,35 @@
                                                                 </div>
                                                         </form>
                                                 </div>
+                                                <div class="row">
+                                                        <div class="col-4 ml-3 mt-3">
+                                                                        <label class="form-check-label" for="exampleRadios1">
+                                                                                        ภาคการเรียนที่จัดกิจกรรม
+                                                                                      </label>
+                                                        </div>
+                                                        <div class="col-7 mt-3">
+                                                                        <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                                                                <label class="form-check-label" for="exampleRadios1">ภาคการเรียนที่ 1</label>    
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                                                                <label class="form-check-label" for="exampleRadios2">ภาคการเรียนที่ 2</label> 
+                                                                        </div>
+                                                                        <div class="form-check">
+                                                                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                                                                <label class="form-check-label" for="exampleRadios2">ภาคการเรียนที่ 3</label>
+                                                                        </div>
+                                                        </div>
+                                                                                
+                                                </div>
                                                 <div class="form-row ml-3">
                                                         <div class="form-group col-md-6">
                                                                 <label for="inputCity">สถานที่จัดกิจกรรม</label>
                                                                 <input type="text" class="form-control" id="inputCity">
                                                         </div>
                                                 </div>
-                                                <button type="button" class="btn btn-outline-danger mt-3">เปิดกิจกรรม</button>
+                                                <button type="button" class="btn btn-outline-primary mt-3" style="margin-left: 330px;">เปิดกิจกรรม</button>
 
                                         </div>
                                         <!-- จัดการพฤติกรรม -->
