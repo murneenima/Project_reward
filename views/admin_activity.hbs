@@ -112,7 +112,7 @@
                         <div class="tab-content" id="myTabContent">
                             <!-- สร้างประเภทกิจกรรม -->
                             <div class="tab-pane fade show active" style="padding-top: 30px;" id="type_activity" role="tabpanel" aria-labelledby="type_activity-tab">
-                                <form action="http://172.16.187.16:3000/post_typeactivity" method="POST">
+                                <form action="http://172.18.102.102:3000/post_typeactivity" method="POST">
                                     <div class="form-group">
                                         <div class="row">
                                             <h3 style="text-decoration: underline ; padding-bottom: 20px;color: brown; margin-left: 20px;"> เพิ่มประเภทของกิจกรรม </h3>
@@ -403,11 +403,6 @@
     <script>
         var data = "{{data}}";
         var dataType = JSON.parse(decodeURI(data)) ;
-
-        function(){
-            var rowdata_larry = "<thead><tr><th>#</th><th>STUDENT ID</th><th>NAME</th><th>SURNAME</th></tr></thead>";
-        }
-
     </script>
 
 

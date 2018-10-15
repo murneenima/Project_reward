@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const hbs = require('hbs')
 mongoose.Promise = global.Promise; 
 
-mongoose.connect('mongodb://localhost:27017/StudentDB').then((doc)=>{
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/StudentDB').then((doc)=>{
     console.log('-------success--------')
 }, (err)=>{
     console.log('fail')
@@ -42,7 +42,7 @@ var TypeSchema = new Schema({
         required: true
     },
     lastid:{
-        default:0
+        type:Number
 
     }
 })
@@ -77,6 +77,7 @@ var TypeActivity = mongoose.model('TypeActivity',TypeSchema) // สร้าง 
 var Activity = mongoose.model('Activity',ActivitySchema) // สร้าง mode/table activity
 
 var app = express()
+app.use(express.static('public'))
 app.set('view engine','hbs')
 //app.use(express.static('public'))
 
@@ -201,7 +202,7 @@ app.get('/activity',(req,res)=>{
 app.post('/post_typeactivity',(req,res)=>{
     let newTypeaActivity = new TypeActivity ({
         typeactivity:req.body.typeactivity,
-        lastid: 0 
+       // lastid: req.
     })
     newTypeaActivity.save().then((doc)=>{
         res.send(doc)
@@ -247,6 +248,6 @@ app.post('/post_activity',(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
     console.log('listin port 3000') 
 })
