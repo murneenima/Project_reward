@@ -73,6 +73,13 @@ var ActivitySchema = new Schema({
 
 })
 
+var OpenSchema = new Schema({
+    name_open :{
+        type:String,
+        required:true
+    }
+})
+
 var Student = mongoose.model('Student',StudentSchema) // สร้าง table
 var TypeActivity = mongoose.model('TypeActivity',TypeSchema) // สร้าง mode/table activity
 var Activity = mongoose.model('Activity',ActivitySchema) // สร้าง mode/table activity
@@ -132,6 +139,7 @@ app.post('/sign_up',(req,res)=>{
     })
 
     newStudent.save().then((doc)=>{
+        
         res.send(doc)
     }, (err) => {
         res.status(400).send(err)
@@ -249,7 +257,14 @@ app.post('/post_activity',(req,res)=>{
     })
     
 })
+
+
 // ========================================= render ============================
+app.get('/activity', (req, res) => {
+    res.render('admin_activity.hbs')
+})
+
+
 app.listen(process.env.PORT || 3000,()=>{
     console.log('listin port 3000') 
 })
