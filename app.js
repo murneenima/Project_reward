@@ -264,6 +264,23 @@ app.get('/activity', (req, res) => {
     res.render('admin_activity.hbs')
 })
 
+app.get('/member', (req, res) => {
+    res.render('admin_member.hbs')
+})
+
+app.get('/point', (req, res) => {
+    res.render('admin_point.hbs')
+})
+
+app.get('/reward', (req, res) => {
+    res.render('admin_reward.hbs')
+})
+app.get('/main', (req, res) => {
+    res.render('admin_main.hbs')
+})
+
+
+
 
 app.listen(process.env.PORT || 3000,()=>{
     console.log('listin port 3000') 
