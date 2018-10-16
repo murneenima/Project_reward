@@ -148,7 +148,6 @@ app.post('/sign_up',(req,res)=>{
 })
 
 app.post('/sign_in',(req,res)=>{
-    
         let studentIDInput = req.body.studentID
         let passwordInput = req.body.password
 
@@ -276,7 +275,17 @@ app.get('/main', (req, res) => {
     res.render('admin_main.hbs')
 })
 
-
+//========================================== sent data ===========================
+app.get('/sentData',(req,res)=>{
+    Student.find({},(err,data)=>{
+        if(err) console.log(err);
+    }).then((data)=>{
+                //data: encodeURI(JSON.stringify(data))
+                res.send(data)
+    },(err)=>{
+        res.status(400).render('fail.hbs')
+    })
+})
 
 
 app.listen(process.env.PORT || 3000,()=>{
