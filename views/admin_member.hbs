@@ -147,8 +147,7 @@
           <!--  เพิ่มสมาชิก -->
           <div class="tab-pane fade " id="student_form" role="tabpanel" aria-labelledby="v-pills-home-tab" style="padding: 20px;background-color:mistyrose;">
             <h3 style="text-decoration: underline ; padding-bottom: 40px;color: brown;"> เพิ่มสมาชิก </h3>
-            <iframe name="votar" style="display:none;"></iframe>
-            <form action="https://coerewards.herokuapp.com/sign_up" method="POST" target="votar" >
+              <form action="http://172.16.186.218:3000/sign_up" method="POST" >
               <div class="row">
                 <div class="col-2">
                   <label for="exampleName">ชื่อ</label>
@@ -203,13 +202,14 @@
                 <input type="submit" class="btn btn-primary" onclick="a()" value="บันทึกข้อมูล">
               </div>
             </form>
+            
           </div>
 
 
           <!--  บ้าน  -->
           <div class="tab-pane fade" style="background-color:mistyrose;" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
             <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist" onclick="findHouse()">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist" >
                 <a class="nav-item nav-link" id="nav-larry-tab" data-toggle="tab" href="#nav-larry" role="tab" aria-controls="nav-larry"aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink">Larry Page</a>
                 <a class="nav-item nav-link" id="nav-mark-tab" data-toggle="tab" href="#nav-mark" role="tab" aria-controls="nav-mark" aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink;">Mark Zuckerberg</a>
                 <a class="nav-item nav-link" id="nav-elon-tab" data-toggle="tab" href="#nav-elon" role="tab" aria-controls="nav-elon" aria-selected="true" style="font-weight: bold;text-decoration-color: #c44569;background-color: pink;">Elon Musk</a>
@@ -341,9 +341,10 @@
       //console.log(dataStudent[i].house)
       //console.log('------------')
     }
-
+    findHouse();
     function a(){
       alert('input member success');
+      location.reload();
     //  document.getElementById('student_name').value = '' ;
     //  document.getElementById('student_surname').value = '' ;
    //   document.getElementById('student_id').value = '';

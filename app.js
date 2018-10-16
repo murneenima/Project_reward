@@ -42,7 +42,8 @@ var TypeSchema = new Schema({
         required: true
     },
     lastid:{
-        type:Number
+        type:Number,
+        default : "0"
 
     }
 })
@@ -77,6 +78,13 @@ var TypeActivity = mongoose.model('TypeActivity',TypeSchema) // สร้าง 
 var Activity = mongoose.model('Activity',ActivitySchema) // สร้าง mode/table activity
 
 var app = express()
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use(express.static('public'))
 app.set('view engine','hbs')
 //app.use(express.static('public'))
@@ -176,33 +184,10 @@ app.get('/find',(req,res)=>{
 
 //================================== Type Activity==================================
 
-
-app.get('/get_typeactivity',(req,res)=>{
-    TypeActivity.find().then((doc)=>{
-        res.send(doc)
-    },(err)=>{ 
-        res.status(400).send(err)
-
-    })
-
-})
-
-app.get('/activity',(req,res)=>{
-    TypeActivity.find({},(err,data)=>{
-        if(err) console.log(err);
-    }).then((data)=>{
-            res.render('admin_activity.hbs',{
-            data: encodeURI(JSON.stringify(data))
-            })
-    },(err)=>{
-        res.status(400).render('fail.hbs')
-    })
-})
-
 app.post('/post_typeactivity',(req,res)=>{
     let newTypeaActivity = new TypeActivity ({
         typeactivity:req.body.typeactivity,
-       // lastid: req.
+        lastid: req.body.lastid
     })
     newTypeaActivity.save().then((doc)=>{
         res.send(doc)
@@ -211,43 +196,60 @@ app.post('/post_typeactivity',(req,res)=>{
     })
 })
 
-//==================================Activity==================================
-
-app.post('/post_activity',(req,res)=>{
-    //console.log(JSON.stringify(req.body))
-    //res.send(req.body)
-    TypeActivity.find({},(err,data)=>{
-        console.log('last ID =  ',TypeActivity.lastid);
-    })
-    let newActivity = new Activity ({
-        id_activity:lastid+1,
-        name_activity:req.body.name_activity,
-        type_activity:req.body.type_activity,
-        point:req.body.point,
-        purpose:req.body.purpose
-
-    })
-    Activity.save().then((doc)=>{
-        res.send(doc)
+app.get('/Typeactivity',(req,res)=>{
+    TypeActivity.find({},(err,dataTYpe)=>{
+        if(err) console.log(err);
+       // console.log(dataType)
+    }).then((dataType)=>{
+            res.render('admin_activity.hbs',{
+                dataType: encodeURI(JSON.stringify(dataType))
+            })
     },(err)=>{
-        res.status(400).send(err)
+        res.status(400).render('fail.hbs')
     })
-
-    TypeActivity.findOne({id_activity: Number}, function(err, lastid){            
-        if(lastid){
-            TypeActivity.id_activity =+ 1
-            TypeActivity.save(function(err) {
-                console.log('=========== ID ',lastid)
-            });
-        }else{
-            console.log(err);
-        }
-    });
-    //console.log('hello')
-    //res.send('hello')
 })
 
 
+//==================================Activity==================================
+
+app.post('/post_activity',(req,res)=>{
+    console.log('req.body is'+JSON.stringify(req.body))
+   TypeActivity.find({
+       typeactivity: req.body.type_activity 
+   }).then((data)=>{
+       console.log('data is '+data[0])
+        let newActivity = new Activity({
+            id_activity: data[0].lastid+1,
+            name_activity: req.body.name_activity,
+            type_activity:req.body.type_activity,
+            point:req.body.point,
+            purpose:req.body.purpose
+        })
+        newActivity.save().then((doc)=>{
+            TypeActivity.findOne({typeactivity: req.body.type_activity}, function(err, data){            
+                if(data){
+                    data.lastid += 1
+                    data.save(function(err) {
+                        if (err) // do something
+                        console.log('is fail to update lastID')
+                        else 
+                        console.log('is UPdated lastID')
+                    });
+                }else{
+                    console.log(err);
+                }
+            });
+            res.send(doc)
+        },(err)=>{
+            res.status(400).send(err)
+        })
+
+    },(err)=>{
+        res.status(400).send(err)
+    })
+    
+})
+// ========================================= render ============================
 app.listen(process.env.PORT || 3000,()=>{
     console.log('listin port 3000') 
 })

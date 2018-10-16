@@ -111,8 +111,8 @@
 
                         <div class="tab-content" id="myTabContent">
                             <!-- สร้างประเภทกิจกรรม -->
-                            <div class="tab-pane fade show active" style="padding-top: 30px;" id="type_activity" role="tabpanel" aria-labelledby="type_activity-tab">
-                                <form action="https://coerewards.herokuapp.com/post_typeactivity" method="POST">
+                            <div class="tab-pane fade show active"  style="padding-top: 30px;" onclick="type()" id="type_activity" role="tabpanel" aria-labelledby="type_activity-tab">
+                                <form action="http://172.16.186.218:3000/post_typeactivity" method="POST"  >
                                     <div class="form-group">
                                         <div class="row">
                                             <h3 style="text-decoration: underline ; padding-bottom: 20px;color: brown; margin-left: 20px;"> เพิ่มประเภทของกิจกรรม </h3>
@@ -126,20 +126,20 @@
                                             </div>
                                         </div>
                                         <div class="row justify-content-center mt-4">
-                                            <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
+                                            <button type="submit" class="btn btn-primary"  >บันทึกข้อมูล</button>
                                         </div>
                                     </div>
                                 </form>
 
                             </div>
                             <!-- สร้างข้อมูลกิจกรรม -->
-                            <div class="tab-pane fade" id="data_activity" role="tabpanel" aria-labelledby="data_activity-tab">
-                               <form action="https://coerewards.herokuapp.com/post_activity" method="POST">
+                            <div class="tab-pane fade" id="data_activity"  role="tabpanel" aria-labelledby="data_activity-tab">
+                               <form action="http://172.16.186.218:3000/post_activity" method="POST" >
                                    <div class="form-group">
                                     <div class="row">
                                         <div class="col-9 mt-3">
                                             <label for="exampleFormControlSelect1">ชื่อกิจกรรม</label>
-                                            <input name="name_activity" type="text" class="input-font py-4 form-control" id="exampleInputTypeActivity" placeholder="ชื่อกิจกรรม">
+                                            <input name="name_activity" type="text" class="input-font py-4 form-control" id="nameactivity" placeholder="ชื่อกิจกรรม">
                                         </div>
 
                                     </div>
@@ -149,9 +149,9 @@
                                         </div>
                                         <div class="col-9 mt-3">
                                             <div class="form-group col-md-4">
-                                                <select name="type_activity" id="inputState" class="form-control">
-                                                    <option selected>Choose...........</option>
-                                                    <option>...</option>
+                                                <select name="type_activity" id="Typeactivity" class="form-control">
+                                                     <option> Choose..... </option> 
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -161,16 +161,16 @@
                                         <div class="col-3">
                                             <div class="form-group mt-3 ">
                                                 <label for="inputPoint">คะแนนที่ได้รับ</label>
-                                                <input name="point" type="number" class="form-control" id="inputPoint" placeholder=คะแนนที่ได้รับ>
+                                                <input name="point" type="number" class="form-control" id="Point" placeholder="คะแนนที่ได้รับ">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="inputObjective">วัตถุประสงค์</label>
-                                        <textarea name="purpose" type="textarea" class="form-control" id="inputObjective" placeholder="วัตถุประสงค์"> </textarea>
+                                        <textarea name="purpose" type="textarea" class="form-control" id="purpose" placeholder="วัตถุประสงค์"> </textarea>
                                     </div>
 
-                                    <button type="button" class="btn btn-outline-primary mt-3" style="margin-left: 330px;">บันทึกข้อมูล</button>
+                                    <button type="submit" onclick="abc()" class="btn btn-outline-primary mt-3" style="margin-left: 330px;">บันทึกข้อมูล</button>
                                 </div>
                                </form>
                                 
@@ -401,8 +401,38 @@
     </div>
 
     <script>
-        var data = "{{data}}";
-        var dataType = JSON.parse(decodeURI(data)) ;
+        var dataType = "{{dataType}}";
+        var Type_data = JSON.parse(decodeURI(dataType)) ; 
+        type()
+ 
+ //======================= push type activity in option ===========================
+        function type(){
+         var type_data=[];
+         var option_type = [];
+        
+         for(let i=0;i< Type_data.length ; i++){
+             type_data[i] = Type_data[i];
+            // console.log('==================');
+             //console.log(type_data[i]);
+             option_type += "<option value='" +type_data[i].typeactivity +"'>" + type_data[i].typeactivity+ "</option>"   ;
+         }
+            document.getElementById("Typeactivity").innerHTML = option_type;
+        }
+       
+        function abc(){
+            let nameactivity,typeactivity,point,purpose ;
+            
+            nameactivity = document.getElementById("nameactivity").value  ;
+           typeactivity = document.getElementById("Typeactivity").value    ;
+           point = document.getElementById("Point").value 
+           purpose = document.getElementById("purpose").value 
+
+           console.log(nameactivity);
+           console.log(typeactivity);
+           console.log(point);
+           console.log(purpose);
+        }
+        
     </script>
 
 
