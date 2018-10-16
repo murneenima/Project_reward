@@ -173,7 +173,7 @@ app.post('/sign_in',(req,res)=>{
     })
 })
 
-app.get('/find',(req,res)=>{
+app.get('/member',(req,res)=>{
     Student.find({},(err,data)=>{
         if(err) console.log(err);
       //  console.log('Student.findOne | ',data);
@@ -264,9 +264,6 @@ app.get('/activity', (req, res) => {
     res.render('admin_activity.hbs')
 })
 
-app.get('/member', (req, res) => {
-    res.render('admin_member.hbs')
-})
 
 app.get('/point', (req, res) => {
     res.render('admin_point.hbs')
