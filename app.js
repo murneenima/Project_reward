@@ -156,7 +156,7 @@ app.post('/sign_in',(req,res)=>{
         password : passwordInput
     }).then((student)=>{
         if(student.length == 1){ //เจอข้อมูล 1 คน 
-            res.send(student[0])// ที่เป็น 0 เพราะมันเจอที่ ตน ที่ 0 มันต้องมีแค่คนเดียว
+            res.render('admin_member.hbs')// ที่เป็น 0 เพราะมันเจอที่ ตน ที่ 0 มันต้องมีแค่คนเดียว
             //  res.render('admin_success.hbs',{
             //     studentID:student[0].studentID,
             //     name:student[0].name,
